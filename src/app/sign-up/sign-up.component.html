@@ -1,0 +1,107 @@
+
+<div class="container">
+    <br>
+    <div style="text-align: center;">
+    
+        <form #f="ngForm"  (submit)="postDetails(f.value)" > 
+
+                 
+            <mat-form-field [style.width.px]=400>
+                <mat-label [class.text-danger]="nom.touched&&nom.invalid" [class.text-success]="nom.touched&&nom.valid"  >nom</mat-label>
+                <input type="text" name="nom" matInput #nom='ngModel' ngModel required minlength=3>
+                <mat-icon matSuffix *ngIf="nom.valid&&nom.touched">sentiment_very_satisfied</mat-icon>
+                <mat-icon matSuffix *ngIf="nom.invalid&&nom.touched">sentiment_very_dissatisfied</mat-icon>
+
+                 <mat-hint align="end" *ngIf="nom.touched &&  nom.invalid " class="text-danger">
+                 <span *ngIf="nom.value===''">nom is required </span>
+                 <span *ngIf="nom.errors?.minlength">minlength is 3 caracters </span>
+
+                 </mat-hint>
+
+            </mat-form-field><br><br>
+      
+            <mat-form-field [style.width.px]=400>
+                <mat-label [class.text-danger]="prenom.touched&&prenom.invalid" [class.text-success]="prenom.touched&&prenom.valid"  >prenom</mat-label>
+                <input type="text" name="prenom" matInput #prenom='ngModel' ngModel required minlength=3>
+                <mat-icon matSuffix *ngIf="prenom.valid&&prenom.touched">sentiment_very_satisfied</mat-icon>
+                <mat-icon matSuffix *ngIf="prenom.invalid&&prenom.touched">sentiment_very_dissatisfied</mat-icon>
+
+                 <mat-hint align="end" *ngIf="prenom.touched &&  prenom.invalid " class="text-danger">
+                 <span *ngIf="prenom.value===''">nom is required </span>
+                 <span *ngIf="prenom.errors?.minlength">minlength is 3 caracters </span>
+
+                 </mat-hint>
+
+            </mat-form-field><br><br>
+
+            <mat-form-field  [style.width.px]=400>
+                <mat-label [class.text-danger]="(email.touched&& email.invalid) || (usedEmail&& email.touched)" [class.text-success]="email.touched&&email.valid">e-mail</mat-label>
+               
+                <input type="text" matInput required #email="ngModel" name="email" ngModel pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z0-9._%+-]{2,9}$"
+                (blur)="checkEmail(email.value) " (click)="checkEmail(email.value)">
+
+                <mat-icon matSuffix *ngIf="email.valid&&email.touched && !usedEmail">sentiment_very_satisfied</mat-icon>
+                <mat-icon matSuffix *ngIf="(email.invalid&&email.touched )||( email.touched && usedEmail)">sentiment_very_dissatisfied</mat-icon>
+                <mat-hint align="end" *ngIf="email.touched &&  email.invalid " class="text-danger">
+                 
+                 <span *ngIf="email.value===''">   email is required <br></span> 
+                 <span *ngIf="email.errors?.pattern"> format: exemple@exp.com <br> </span>
+        
+                </mat-hint>
+                <mat-hint class="text-danger" *ngIf="usedEmail"> this email adress existe please try to connect </mat-hint>
+            </mat-form-field>
+            <br><br>
+            
+            <mat-form-field  [style.width.px]=400>
+                <mat-label [class.text-danger]="password.touched&& password.invalid" [class.text-success]="password.touched&&password.valid">password</mat-label>
+                <input type="password" matInput required  #password="ngModel" name="password" ngModel minlength="8" pattern="^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9]{8,}$">
+                <mat-icon matSuffix *ngIf="password.valid&&password.touched">sentiment_very_satisfied</mat-icon>
+                <mat-icon matSuffix *ngIf="password.invalid&&password.touched">sentiment_very_dissatisfied</mat-icon>
+                <mat-hint align="end" *ngIf="password.invalid && password.touched">
+                   <span *ngIf="password.value===''" class="text-danger"> password is required</span>
+                   <span *ngIf="password.errors?.minlength" class="text-danger">minlength is 8 caracters<br></span>
+                   <span *ngIf="password.errors?.pattern" class="text-danger">Capital caracter, one number, small caracter <br></span>
+                 
+                </mat-hint>
+                <mat-hint  class="text-danger"> </mat-hint>
+    
+            </mat-form-field><br><br>
+
+            <mat-form-field  [style.width.px]=400>
+                <mat-label [class.text-danger]="confirmPassword.touched&& confirmPassword.invalid" [class.text-success]="confirmPassword.touched&&confirmPassword.valid">Confirm Password</mat-label>
+                <input type="password" matInput required  #confirmPassword="ngModel" name="confirmPassword" ngModel minlength="8" pattern="^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9]{8,}$">
+                <mat-icon matSuffix *ngIf="confirmPassword.valid&&confirmPassword.touched">sentiment_very_satisfied</mat-icon>
+                <mat-icon matSuffix *ngIf="confirmPassword.invalid&&confirmPassword.touched">sentiment_very_dissatisfied</mat-icon>
+                <mat-hint align="end" *ngIf="confirmPassword.invalid && confirmPassword.touched">
+                   <span *ngIf="confirmPassword.value===''" class="text-danger"> password is required <br></span>
+                   <span *ngIf="confirmPassword.errors?.minlength" class="text-danger">minlength is 8 caracters<br></span>
+                   <span *ngIf="confirmPassword.errors?.pattern" class="text-danger">Capital caracter, one number, small caracter <br></span>
+                 
+                </mat-hint>
+                <mat-hint  class="text-danger" *ngIf="(confirmPassword.value!=password.value) && confirmPassword.touched " >passwords do not match </mat-hint>
+                <mat-hint  class="text-success" *ngIf="(confirmPassword.value===password.value) && confirmPassword.touched " >passwords matched </mat-hint>
+
+            </mat-form-field> <br><br>
+
+            <mat-form-field  [style.width.px]=400>
+                <mat-label [class.text-danger]="image.touched&& image.invalid" [class.text-success]="image.touched&&image.valid">image</mat-label>
+                <input type="text" matInput required  #image="ngModel" name="image" ngModel>
+                <mat-icon matSuffix *ngIf="image.valid&&image.touched">sentiment_very_satisfied</mat-icon>
+                <mat-icon matSuffix *ngIf="image.invalid&&image.touched">sentiment_very_dissatisfied</mat-icon>
+                <mat-hint align="end" *ngIf="image.invalid && image.touched">
+                   <span *ngIf="image.errors?.required" class="text-danger"> image is required <br></span>
+                                    
+                </mat-hint>
+             
+
+            </mat-form-field> 
+            <br><br>
+               <img [src]="image.value" *ngIf="image.value" width="160 rem" height="120 rem" >
+            <br><br> 
+            <button mat-raised-button type="submit" [disabled]="f.invalid" >Create Account</button>
+            <button mat-raised-button  routerLink="/login" >Login</button>
+            </form>
+    
+    </div>
+    <br><br>
+    </div>

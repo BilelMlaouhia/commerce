@@ -1,0 +1,34 @@
+
+
+<div class="container" >
+
+<mat-toolbar  class="space" color="primary" >
+
+    <div>
+      <a routerLink="/home" mat-icon-button class="bt">  <mat-icon>linked_camera</mat-icon></a>
+       
+     
+        <span ><a  routerLink="/home" mat-icon-button class="bt"  >Acceuil </a>  </span> 
+        <span><a  routerLink="/myproduits" mat-icon-button class="bt" *ngIf="autoriser"> MesProduits </a> </span>
+    </div>
+<span>        <span><a  routerLink="/ajouter-produits" mat-icon-button class="bt" *ngIf="autoriser"> <mat-icon>add_circle_outline</mat-icon>Ajouter Produit </a> </span>
+
+</span>
+    <div >
+      <span><a mat-icon-button class="bt" routerLink="/produits-choisie" matTooltip="consulter les produits selectionner"><mat-icon [matBadge]="num_produit_choisie" matBadgeColor="warn" (click)="consulter_liste_choisie() ">shopping_cart</mat-icon> </a></span>
+ <span><a    mat-icon-button class="bt" matTooltip="contact us" routerLink="/contact" ><mat-icon>contact_support</mat-icon></a> </span>
+ <span ><a   mat-icon-button class="bt" style="padding-right: 3rem;" routerLink="/signup" *ngIf="!autoriser"> <mat-icon>assignment</mat-icon> Sign up </a> </span>
+ <span> <a   mat-icon-button class="bt"  routerLink="/login" *ngIf="!autoriser"><mat-icon>login</mat-icon>Login</a>  </span>
+ <span> <a  routerLink="/myprofile" mat-icon-button class="bt" *ngIf="autoriser"> Profile </a> </span>
+
+ <span><a  mat-icon-button class="bt" *ngIf="autoriser" (click)="logOut() ">Logout <mat-icon>logout</mat-icon> </a> </span>
+
+ 
+
+
+</div>
+
+
+</mat-toolbar>
+
+</div>

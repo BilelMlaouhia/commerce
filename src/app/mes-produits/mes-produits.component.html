@@ -1,0 +1,43 @@
+
+
+
+<div class="container">
+  
+  
+    <div  class="card" *ngFor="let u of myProducts ,  index as i">
+       
+
+  
+    <mat-card >
+        <div class="alert alert-danger" *ngIf="product_deleted[i] ">Item Deleted </div>
+        <mat-card-header>
+            <img mat-card-avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9F2juIGCkc6gNxwVs0dt5qZl7WXqSlkiVDQ&usqp=CAU"  >
+    
+    <mat-card-title-group>
+    
+        <mat-card-title>{{u.nom}}</mat-card-title>
+       
+    </mat-card-title-group>
+    </mat-card-header>
+    <img mat-card-lg-image [src]="u.image "  >
+    <mat-card-content>
+        <mat-card-title><b> <br>{{u.prix |prix}}</b> </mat-card-title>
+     <mat-card-title *ngIf="show[i] ">  <br> {{myProducts[i].description}} <br></mat-card-title>
+    
+    </mat-card-content>
+    
+    <mat-card-actions align="end">
+    <button mat-raised-button  class="tip" (click)="showDetails(i)" ><span *ngIf="!show[i]  ">détailles</span> <span *ngIf="show[i] ">cacher détailles</span></button>
+    <button mat-mini-fab color="accent" matTooltip="Editer Produit" matTooltipHideDelay="300"  > <mat-icon>edit</mat-icon> </button>
+    <button mat-mini-fab color="warn" matTooltip="supprimer " matTooltipHideDelay="300" (click)="deleteProduct(u,i) " > <mat-icon>delete</mat-icon> </button>
+
+    </mat-card-actions>
+      
+    </mat-card>
+
+    
+    
+    
+    </div>
+    
+    </div>

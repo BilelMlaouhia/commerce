@@ -1,0 +1,44 @@
+<div class="container">
+<br><br><br><br><br><br>
+<div style="text-align: center;">
+
+    <form #f="ngForm"  (submit)="postDetails(f.value)" > 
+
+        <mat-form-field  [style.width.px]=400>
+            <mat-label [class.text-danger]="email.touched&& email.invalid" [class.text-success]="email.touched&&email.valid">e-mail</mat-label>
+           
+            <input type="text" matInput required #email="ngModel" name="email" ngModel pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z0-9._%+-]{2,9}$">
+            <mat-icon matSuffix *ngIf="email.valid&&email.touched">sentiment_very_satisfied</mat-icon>
+            <mat-icon matSuffix *ngIf="email.invalid&&email.touched">sentiment_very_dissatisfied</mat-icon>
+            <mat-hint align="end" *ngIf="email.touched &&  email.invalid " class="text-danger">
+             
+             <span *ngIf="email.value===''">   email is required <br></span> 
+             <span *ngIf="email.errors?.pattern"> format: exemple@exp.com <br> </span>
+    
+            </mat-hint>
+            <mat-hint *ngIf="err==='wrong email or not found'" class="text-danger">{{err}} </mat-hint>
+        </mat-form-field>
+        <br><br>
+        
+        <mat-form-field  [style.width.px]=400>
+            <mat-label [class.text-danger]="password.touched&& password.invalid" [class.text-success]="password.touched&&password.valid">password</mat-label>
+            <input type="password" matInput required  #password="ngModel" name="password" ngModel minlength="8" pattern="^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9]{8,}$">
+            <mat-icon matSuffix *ngIf="password.valid&&password.touched">sentiment_very_satisfied</mat-icon>
+            <mat-icon matSuffix *ngIf="password.invalid&&password.touched">sentiment_very_dissatisfied</mat-icon>
+            <mat-hint align="end" *ngIf="password.invalid && password.touched">
+               <span *ngIf="password.value===''" class="text-danger"> password is required</span>
+               <span *ngIf="password.errors?.minlength" class="text-danger">minlength is 8 caracters<br></span>
+               <span *ngIf="password.errors?.pattern" class="text-danger">Capital caracter, one number, small caracter <br></span>
+             
+            </mat-hint>
+            <mat-hint *ngIf="err==='wrong password'" class="text-danger">{{err}} </mat-hint>
+
+        </mat-form-field>
+        <br><br>
+        <button mat-raised-button type="submit" [disabled]="f.invalid" >Connect</button>
+        <button mat-raised-button  routerLink="/signup" >Sign up</button>
+        </form>
+
+</div>
+<br><br><br>
+</div>
