@@ -52,7 +52,7 @@ currentUser:UserInterface={
   }
 
   ngOnInit(): void {
-    this.setValue_toObserver(false)
+  
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -213,7 +213,7 @@ currentUser:UserInterface={
     return p
   }
 
- setValue_toObserver(v:any){
+ setValue_toObserver(v:boolean){
   console.log('testttttttttttttttt')
    return this.canDesActivate.next(v)
 

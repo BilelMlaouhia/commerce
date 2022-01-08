@@ -34,8 +34,6 @@ err:any
      this.userService.setValue_toObserver(true)
      
      this.router.navigate(['/myprofile'])
-   }else {
-     this.router.navigateByUrl('/login')
    }
   }).catch(err=>this.err=err)
 
