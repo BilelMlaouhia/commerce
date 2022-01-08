@@ -10,7 +10,6 @@ import { UsersService } from '../services/users.service';
 })
 export class NavbarComponent implements OnInit,OnDestroy {
   autoriser = false
-  subcription?:Subscription
   num_produit_choisie=0
   tout_prdouit_choisie:any[]=[]
   
@@ -28,7 +27,8 @@ export class NavbarComponent implements OnInit,OnDestroy {
 this.userService.prod_chosen.subscribe(res=>{
   console.log("from navbar "+res);
   this.tout_prdouit_choisie=res
-  this.num_produit_choisie = res.length
+  this.userService.nb_produits_choisie = res.length
+ this.num_produit_choisie =  this.userService.nb_produits_choisie
 })
 
   }
@@ -41,6 +41,7 @@ this.userService.prod_chosen.subscribe(res=>{
     localStorage.removeItem('logID')
     localStorage.removeItem('userID')
     localStorage.removeItem('userId')
+    this.userService.setValue_toObserver(false)
    this.autoriser=false
    })
 
@@ -50,6 +51,9 @@ this.userService.prod_chosen.subscribe(res=>{
   console.log("touts les produits choisie "+this.tout_prdouit_choisie);
   
  }
+
+
+ 
 
 
  ngOnDestroy(): void {

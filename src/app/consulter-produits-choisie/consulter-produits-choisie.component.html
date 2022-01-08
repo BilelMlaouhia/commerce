@@ -2,8 +2,9 @@
 
 
 <div class="container">
-    {{myProducts |json}}
-     <div class="alert alert-info" *ngIf="myProducts.length==0 ">vous n'avez aucun produuit sélectionner </div>
+    <mat-card *ngIf="total_achat()!=0 " class="bg-success text-center text-white"> <b>Total des {{total_achat()|prix}}</b> <br><br> </mat-card>
+<br><br>
+     <div class="alert alert-primary" *ngIf="myProducts.length==0 ">vous n'avez aucun produuit sélectionner </div>
     <div  class="card" *ngFor="let u of myProducts ,  index as i">
        
 
@@ -28,8 +29,8 @@
     
     <mat-card-actions align="end">
     <button mat-raised-button  class="tip" (click)="showDetails(i)" ><span *ngIf="!show[i]  ">détailles</span> <span *ngIf="show[i] ">cacher détailles</span></button>
-    <button mat-mini-fab color="accent" matTooltip="Editer Produit" matTooltipHideDelay="300"  > <mat-icon>edit</mat-icon> </button>
-    <button mat-mini-fab color="warn" matTooltip="supprimer " matTooltipHideDelay="300" (click)="deleteProduct(i) " > <mat-icon>unSélectionner</mat-icon> </button>
+
+    <button mat-mini-fab color="warn" matTooltip="supprimer de la liste " matTooltipHideDelay="300" (click)="deleteProduct(u) " > <mat-icon>delete</mat-icon> </button>
 
     </mat-card-actions>
       
@@ -40,4 +41,6 @@
     
     </div>
     
+
+
     </div>

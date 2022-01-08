@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AjouterProduitsComponent } from './ajouter-produits/ajouter-produits.component';
 import { ConsulterProduitsChoisieComponent } from './consulter-produits-choisie/consulter-produits-choisie.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AuthGuard } from './guards/auth.guard';
+import { UnAuthGuard } from './guards/un-auth.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MesProduitsComponent } from './mes-produits/mes-produits.component';
@@ -14,7 +16,7 @@ const routes: Routes = [
 {path:'home',component:HomeComponent},
 {path:'signup',component:SignUpComponent},
 {path:'login',component:LoginComponent},
-{path:'myprofile',component:UserProfileComponent},
+{path:'myprofile',component:UserProfileComponent,canActivate:[AuthGuard]},
 {path:'contact',component:ContactUsComponent},
 {path:'myproduits',component:MesProduitsComponent},
 {path:'ajouter-produits',component:AjouterProduitsComponent},

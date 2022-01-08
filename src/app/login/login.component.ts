@@ -31,7 +31,9 @@ err:any
      console.log("the user "+JSON.stringify(u));
      this.userService.onSendStatus(true)
      localStorage.setItem('userId',`${u.id}`)
-     this.router.navigateByUrl('/myprofile')
+     this.userService.setValue_toObserver(true)
+     
+     this.router.navigate(['/myprofile'])
    }else {
      this.router.navigateByUrl('/login')
    }

@@ -1,13 +1,17 @@
 
+
+
+
 .space{
     justify-content: space-between;
     background-color: #004B8D;
-
+    transition: top 0.3s
 }
 
 span{
     padding-right: 1rem;
     padding-left: 1rem;
+    position: relative;
   
 }
 .bt:hover{
@@ -18,4 +22,7 @@ span{
 }
 .div{
     justify-content: space-between;
+
+	z-index: 100000;
 }
+
