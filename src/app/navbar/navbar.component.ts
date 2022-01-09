@@ -12,10 +12,10 @@ export class NavbarComponent implements OnInit,OnDestroy {
   autoriser = false
   num_produit_choisie=0
   tout_prdouit_choisie:any[]=[]
-  
+
 
   constructor(private router:Router, private userService:UsersService) {
-  
+
 
 
    }
@@ -36,29 +36,31 @@ this.userService.prod_chosen.subscribe(res=>{
 
  logOut(){
  // this.autoriser=false
-   
+
    this.router.navigateByUrl('/login').then(()=>{
     localStorage.removeItem('logID')
     localStorage.removeItem('userID')
     localStorage.removeItem('userId')
-    
+    localStorage.setItem('userId','0')
+
     this.userService.setValue_toObserver(false)
    this.autoriser=false
    })
 
  }
- 
+
  consulter_liste_choisie(){
   console.log("touts les produits choisie "+this.tout_prdouit_choisie);
-  
+
  }
 
 
- 
+
 
 
  ngOnDestroy(): void {
-     
+
+
  }
 
 
