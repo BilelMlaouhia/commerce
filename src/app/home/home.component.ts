@@ -22,11 +22,13 @@ products:any[]=[]
 show:boolean[]=[]
 index_product=0
 current_product:ProductInterface[]=[]
-chosen_products:any=[0]
+chosen_products:any[0]=[0]
 
 
   constructor(private userService:UsersService) {
-   
+  this.userService.prod_chosen.subscribe(res=>{
+    this.chosen_products=res
+  })
    }
 
   ngOnInit(): void {

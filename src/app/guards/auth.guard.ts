@@ -15,14 +15,15 @@ export class AuthGuard implements CanActivate {
 
 
   canActivate(
-  ):  boolean | Observable<boolean>  {
-let res=this.userService.isLoggedIn()
+  ):any|  boolean  {
+let res=Number(localStorage.getItem('userId'))
  console.log("value of return "+res);
- if(!res){this.router.navigateByUrl('/login').then((r)=>{
+ if(res==0 || res==undefined|| res ==null){this.router.navigateByUrl('/login').then((r)=>{
    console.log("from auth guard routed "+r);
-   
- })}
- return res
+   return false})
+  }else 
+   return true
+  
 
   }
 

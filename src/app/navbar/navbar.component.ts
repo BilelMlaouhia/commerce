@@ -41,6 +41,7 @@ this.userService.prod_chosen.subscribe(res=>{
     localStorage.removeItem('logID')
     localStorage.removeItem('userID')
     localStorage.removeItem('userId')
+    
     this.userService.setValue_toObserver(false)
    this.autoriser=false
    })

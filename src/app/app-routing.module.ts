@@ -15,14 +15,14 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 const routes: Routes = [
 {path:'',component:HomeComponent},
 {path:'home',component:HomeComponent},
-{path:'signup',component:SignUpComponent},
-{path:'login',component:LoginComponent},
+{path:'signup',component:SignUpComponent,canActivate:[UnAuthGuard]},
+{path:'login',component:LoginComponent,canActivate:[UnAuthGuard]},
 {path:'myprofile',component:UserProfileComponent,canActivate:[AuthGuard]},
 {path:'contact',component:ContactUsComponent},
-{path:'myproduits',component:MesProduitsComponent},
-{path:'ajouter-produits',component:AjouterProduitsComponent},
+{path:'myproduits',component:MesProduitsComponent,canActivate:[AuthGuard]},
+{path:'ajouter-produits',component:AjouterProduitsComponent,canActivate:[AuthGuard]},
 {path:'produits-choisie',component:ConsulterProduitsChoisieComponent},
-{path:'editProduit',component:EditProduitComponent},
+{path:'editProduit',component:EditProduitComponent,canActivate:[AuthGuard]},
 {path:'**',component:HomeComponent}
 
 

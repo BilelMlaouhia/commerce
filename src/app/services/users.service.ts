@@ -3,7 +3,7 @@ import { Injectable, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angula
 import { Observable, Subject } from 'rxjs';
 import { ProductInterface } from '../interfaces/product-interface';
 import { UserInterface } from '../interfaces/user-interface';
-import { map, multicast } from 'rxjs/operators'
+import {  multicast } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ prod_edit:any
 les_produit_choisie:any=[] 
 prod=new Subject<any[]>()
 prod_chosen =this.prod.asObservable()
-nb_produits_choisie:number=0
+nb_produits_choisie?:number
 utilisateur_autoriser = new Subject<boolean>()
 autoriser = this.utilisateur_autoriser.asObservable()
 multicast=this.prod.pipe(multicast(this.prod))

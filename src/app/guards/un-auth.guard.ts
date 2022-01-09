@@ -14,18 +14,16 @@ export class UnAuthGuard implements CanActivate {
 
   canActivate(
   ):any|  boolean  {
-  //  let auth:any =true
-  //  this.userService.canDesActivate$.subscribe(res=>auth=!res)
-   
-  //   // if(auth==false){
-  //   //   this.router.navigateByUrl('/home')
-  //   // }
-  //   console.log('unAuth '+auth);
+    let res=Number(localStorage.getItem('userId'))
+    console.log("value of return "+res);
+    if(res==0 || res==undefined|| res ==null){
+          return true
     
-  //     return auth;
-    }
+     }else {this.router.navigateByUrl('/home').then((r)=>{
+      console.log("from auth guard routed "+r)
+      return true
+    })
 
-    
-  
-  
+     }
+    }
 }
