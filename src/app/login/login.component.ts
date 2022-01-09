@@ -22,14 +22,17 @@ err:any
   postDetails(f:any){
   this.userService.onFind_User_By_Email_And_Password(f).then((val)=>{
     let v :any=val
-    console.log("the v value "+JSON.stringify(v) );
+   // console.log("the v value "+JSON.stringify(v) );
     this.currentUser=v
 
   return this.currentUser
-  }).then((u)=>{
+  }).then((res)=>{
+    this.userService.onSendStatus(true)
+return res
+  })
+  .then((u)=>{
    if(this.currentUser.id){
-     console.log("the user "+JSON.stringify(u));
-     this.userService.onSendStatus(true)
+   //  console.log("the user "+JSON.stringify(u));
      localStorage.setItem('userId',`${u.id}`)
      this.userService.setValue_toObserver(true)
      

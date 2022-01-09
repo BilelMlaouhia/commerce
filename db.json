@@ -31,11 +31,11 @@
     },
     {
       "id": 5,
-      "nom": "Angular Router",
+      "nom": "Angular Router ",
       "image": "https://w3path.com/wp-content/uploads/2020/09/angular-routing.jpg",
       "description": "make u able to navigate into your application easily and faster",
       "prix": 800,
-      "type": "Router",
+      "type": "Caméra",
       "userId": "3"
     },
     {

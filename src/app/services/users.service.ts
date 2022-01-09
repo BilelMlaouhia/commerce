@@ -3,17 +3,17 @@ import { Injectable, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angula
 import { Observable, Subject } from 'rxjs';
 import { ProductInterface } from '../interfaces/product-interface';
 import { UserInterface } from '../interfaces/user-interface';
-import { multicast } from 'rxjs/operators'
+import { map, multicast } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService implements OnInit, OnDestroy,OnChanges {
-
+res:boolean=false
 canDesActivate= new Subject<boolean>()
 
 canDesActivate$=this.canDesActivate.asObservable()
-
+prod_edit:any
 les_produit_choisie:any=[] 
 prod=new Subject<any[]>()
 prod_chosen =this.prod.asObservable()
@@ -48,11 +48,12 @@ currentUser:UserInterface={
 
 
   constructor(private http:HttpClient) {
-    
+    this.setValue_toObserver(false)
+   
   }
 
   ngOnInit(): void {
-  
+  this. isLoggedIn()
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -214,12 +215,23 @@ currentUser:UserInterface={
   }
 
  setValue_toObserver(v:boolean){
-  console.log('testttttttttttttttt')
+  
    return this.canDesActivate.next(v)
 
  }
- isLoggedIn(){
-   return this.canDesActivate$;
+ isLoggedIn():boolean | Observable<boolean>{
+   
+    this.canDesActivate$.subscribe((e)=>{
+     this.res=e
+    });
+
+    return this.res
  }
+
+   send_Product(p:any){
+     this.prod_edit=p
+     return p
+   }
+
 
 }

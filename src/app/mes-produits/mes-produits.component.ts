@@ -42,7 +42,7 @@ export class MesProduitsComponent implements OnInit {
        j++
      }
    }
-  console.log("from mes produits line 43"+JSON.stringify(this.myProducts));
+ // console.log("from mes produits line 43"+JSON.stringify(this.myProducts));
   
   }).catch(err=>console.log(err))
 
@@ -75,6 +75,9 @@ export class MesProduitsComponent implements OnInit {
      
      
     }
-  
-
+    
+    evoryer_Produit(p:any){
+      this.userService.send_Product(p)
+    }
+    
 }

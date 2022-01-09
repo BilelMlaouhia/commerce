@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AjouterProduitsComponent } from './ajouter-produits/ajouter-produits.component';
 import { ConsulterProduitsChoisieComponent } from './consulter-produits-choisie/consulter-produits-choisie.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { EditProduitComponent } from './edit-produit/edit-produit.component';
 import { AuthGuard } from './guards/auth.guard';
 import { UnAuthGuard } from './guards/un-auth.guard';
 import { HomeComponent } from './home/home.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
 {path:'myproduits',component:MesProduitsComponent},
 {path:'ajouter-produits',component:AjouterProduitsComponent},
 {path:'produits-choisie',component:ConsulterProduitsChoisieComponent},
+{path:'editProduit',component:EditProduitComponent},
 {path:'**',component:HomeComponent}
 
 

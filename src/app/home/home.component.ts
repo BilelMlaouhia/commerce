@@ -18,11 +18,12 @@ import { UsersService } from '../services/users.service';
 
 export class HomeComponent implements OnInit,OnDestroy {
 users:any
-products:any
+products:any[]=[]
 show:boolean[]=[]
 index_product=0
 current_product:ProductInterface[]=[]
 chosen_products:any=[0]
+
 
   constructor(private userService:UsersService) {
    
@@ -38,8 +39,10 @@ chosen_products:any=[0]
   getProducts(){
         
 this.userService.onGetAllProducts().then((data)=>{
-  this.products=data
-  console.log("from home component "+this.products);
+  let d:any
+  d=data
+  this.products=d
+ // console.log("from home component "+this.products);
 })
   }
   

@@ -15,17 +15,15 @@ export class AuthGuard implements CanActivate {
 
 
   canActivate(
-  ):any|  boolean | Observable<boolean>  {
-this.userService.canDesActivate$.subscribe(res=>
+  ):  boolean | Observable<boolean>  {
+let res=this.userService.isLoggedIn()
+ console.log("value of return "+res);
+ if(!res){this.router.navigateByUrl('/login').then((r)=>{
+   console.log("from auth guard routed "+r);
+   
+ })}
+ return res
 
-  {return true}
-  
-)
-this.router.navigateByUrl('/login')
-return false
-}
- 
-
-
+  }
 
 }

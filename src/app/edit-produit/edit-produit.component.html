@@ -1,0 +1,95 @@
+<div class="container">
+    <br><br>
+    <div style="text-align: center;">
+        <div class="alert alert-success" *ngIf="product_Edited"><br>Produit éditer Correctement <br></div>
+
+ <form [formGroup]="newProduit" (submit)="onPost_Changes() ">
+        <mat-form-field  [style.width.px]=400>
+            <mat-label [class.text-danger]="control_Name('nom')?.touched&& control_Name('nom')?.invalid" 
+            [class.text-success]="control_Name('nom')?.touched&&control_Name('nom')?.valid">nom de produit</mat-label>
+           
+            <input type="text" matInput formControlName="nom"  >
+            <mat-icon matSuffix *ngIf="control_Name('nom')?.valid ">sentiment_very_satisfied</mat-icon>
+            <mat-icon matSuffix *ngIf="control_Name('nom')?.invalid&&control_Name('nom')?.touched">sentiment_very_dissatisfied</mat-icon>
+            <mat-hint align="end" *ngIf="control_Name('nom')?.touched &&  control_Name('nom')?.invalid " class="text-danger">
+             
+            
+             <span *ngIf="control_Name('nom')?.errors?.required"> nom is required <br> </span>
+    
+            </mat-hint>
+          
+        </mat-form-field> <br>
+
+        <mat-form-field  [style.width.px]=400>
+            <mat-label [class.text-danger]="control_Name('description')?.touched&& control_Name('description')?.invalid" 
+            [class.text-success]="control_Name('description')?.touched&&control_Name('description')?.valid">description</mat-label>
+           
+            <input type="text" matInput  formControlName="description"  >
+            <mat-icon matSuffix *ngIf="control_Name('description')?.valid ">sentiment_very_satisfied</mat-icon>
+            <mat-icon matSuffix *ngIf="control_Name('description')?.invalid&&control_Name('description')?.touched">sentiment_very_dissatisfied</mat-icon>
+            <mat-hint align="end" *ngIf="control_Name('description')?.touched &&  control_Name('description')?.invalid " class="text-danger">
+             
+            
+             <span *ngIf="control_Name('description')?.errors?.required"> description is required <br> </span>
+             <span *ngIf="control_Name('description')?.errors?.minlength"> min lenght 15 caracters <br> </span>
+            </mat-hint>
+          
+        </mat-form-field> <br>
+
+        <mat-form-field  [style.width.px]=400>
+            <mat-label [class.text-danger]="control_Name('prix')?.touched&& control_Name('prix')?.invalid" 
+            [class.text-success]="control_Name('prix')?.touched&&control_Name('prix')?.valid">prix</mat-label>
+           
+            <input type="number" matInput  formControlName="prix"  >
+            <mat-icon matSuffix *ngIf="control_Name('prix')?.valid ">sentiment_very_satisfied</mat-icon>
+            <mat-icon matSuffix *ngIf="control_Name('prix')?.invalid&&control_Name('prix')?.touched">sentiment_very_dissatisfied</mat-icon>
+            <mat-hint align="end" *ngIf="control_Name('prix')?.touched &&  control_Name('prix')?.invalid " class="text-danger">
+             
+            
+             <span *ngIf="control_Name('prix')?.errors?.required &&control_Name('prix')?.touched"> prix is required <br> </span>
+            
+     
+            </mat-hint>
+          
+        </mat-form-field> <br>
+
+        
+        <mat-form-field  [style.width.px]=400>
+            <mat-label [class.text-danger]="control_Name('type')?.touched&& control_Name('type')?.invalid" 
+            [class.text-success]="control_Name('type')?.touched&&control_Name('type')?.valid">type</mat-label>
+           
+            <input type="text" matInput  formControlName="type"  >
+            <mat-icon matSuffix *ngIf="control_Name('type')?.valid ">sentiment_very_satisfied</mat-icon>
+            <mat-icon matSuffix *ngIf="control_Name('type')?.invalid&&control_Name('type')?.touched">sentiment_very_dissatisfied</mat-icon>
+            <mat-hint align="end" *ngIf="control_Name('type')?.touched &&  control_Name('type')?.invalid " class="text-danger">
+             
+            
+             <span *ngIf="control_Name('description')?.errors?.required"> type is required <br> </span>
+            
+            </mat-hint>
+          
+        </mat-form-field> <br>
+
+        <mat-form-field  [style.width.px]=400>
+            <mat-label [class.text-danger]="control_Name('image')?.touched&& control_Name('image')?.invalid" 
+            [class.text-success]="control_Name('image')?.touched&&control_Name('image')?.valid">image</mat-label>
+           
+            <input type="text" matInput  formControlName="image"  >
+            <mat-icon matSuffix *ngIf="control_Name('image')?.valid ">sentiment_very_satisfied</mat-icon>
+            <mat-icon matSuffix *ngIf="control_Name('image')?.invalid&&control_Name('image')?.touched">sentiment_very_dissatisfied</mat-icon>
+            <mat-hint align="end" *ngIf="control_Name('image')?.touched &&  control_Name('image')?.invalid " class="text-danger">
+             
+            
+             <span *ngIf="control_Name('image')?.errors?.required"> image is required <br> </span>
+            
+            </mat-hint>
+        </mat-form-field> <br>                     
+         <img [src]="control_Name('image')?.value" *ngIf="control_Name('image')?.value" width="180px" height="120px" > <br><br><br>
+         <button mat-raised-button type="submit" [disabled]="newProduit.invalid" class="bn">Enregistré</button>
+
+
+    </form>
+
+    </div>
+   
+</div>

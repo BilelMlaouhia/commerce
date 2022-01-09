@@ -18,6 +18,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { MesProduitsComponent } from './mes-produits/mes-produits.component';
 import { AjouterProduitsComponent } from './ajouter-produits/ajouter-produits.component';
 import { ConsulterProduitsChoisieComponent } from './consulter-produits-choisie/consulter-produits-choisie.component';
+import { EditProduitComponent } from './edit-produit/edit-produit.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { ConsulterProduitsChoisieComponent } from './consulter-produits-choisie/
     MesProduitsComponent,
     AjouterProduitsComponent,
     ConsulterProduitsChoisieComponent,
+    EditProduitComponent,
     
   ],
   imports: [

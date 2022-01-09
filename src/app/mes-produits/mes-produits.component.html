@@ -28,7 +28,7 @@
     
     <mat-card-actions align="end">
     <button mat-raised-button  class="tip" (click)="showDetails(i)" ><span *ngIf="!show[i]  ">détailles</span> <span *ngIf="show[i] ">cacher détailles</span></button>
-    <button mat-mini-fab color="accent" matTooltip="Editer Produit" matTooltipHideDelay="300"  > <mat-icon>edit</mat-icon> </button>
+    <button mat-mini-fab color="accent" matTooltip="Editer Produit" matTooltipHideDelay="300" (click)="evoryer_Produit(u) " routerLink="/editProduit" > <mat-icon>edit</mat-icon> </button>
     <button mat-mini-fab color="warn" matTooltip="supprimer " matTooltipHideDelay="300" (click)="deleteProduct(u,i) " > <mat-icon>delete</mat-icon> </button>
 
     </mat-card-actions>
